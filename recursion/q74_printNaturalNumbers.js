@@ -1,14 +1,16 @@
 // Q 74. Print natural number 1-n / n-1 using recursion
 
 // Function to print from 1 to n
-function print1ToN(n, current = 1) {
+// Function to print from 1 to n (Classic approach without extra parameter)
+function print1ToN(n) {
     // Base case
-    if (current > n) {
+    if (n === 0) {
         return;
     }
-    console.log(current);
-    // Recursive call
-    print1ToN(n, current + 1);
+    // Recursive call first
+    print1ToN(n - 1);
+    // Print happens during the unwinding of the call stack
+    console.log(n);
 }
 
 // Function to print from n to 1
