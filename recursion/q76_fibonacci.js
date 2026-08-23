@@ -1,25 +1,26 @@
-// Q 76. Fibonacci series using recursion
+// Q 76. Fibonacci series using recursion (Optimized Tail Recursion)
 
-// Function to find the nth Fibonacci number
-function fibonacci(n) {
-    // Base cases: 0th Fibonacci is 0, 1st Fibonacci is 1
-    if (n === 0) {
-        return 0;
-    }
-    if (n === 1) {
-        return 1;
-    }
+// Function to print remaining n terms of Fibonacci series
+function fiboNTerms(n, first, second) {
+    // Base case: if no terms left to print, return
+    if (n === 0) return;
     
-    // Recursive call: sum of previous two Fibonacci numbers
-    return fibonacci(n - 1) + fibonacci(n - 2);
+    // Calculate the next term
+    let third = first + second;
+    process.stdout.write(third + " ");
+    
+    // Recursive call with updated states and n-1
+    fiboNTerms(n - 1, second, third);
 }
 
-const n = 6;
-console.log(`The ${n}th Fibonacci number is:`, fibonacci(n));
-
-// To print the series up to n
+let n = 10; // Total number of terms to print
 console.log(`Fibonacci series up to ${n} terms:`);
-for (let i = 0; i <= n; i++) {
-    process.stdout.write(fibonacci(i) + " ");
+
+if (n >= 1) process.stdout.write(0 + " ");
+if (n >= 2) process.stdout.write(1 + " ");
+
+// Recursively print the remaining (n-2) terms
+if (n > 2) {
+    fiboNTerms(n - 2, 0, 1);
 }
-console.log();
+console.log(); // Just to print a new line at the end
