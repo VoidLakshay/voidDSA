@@ -12,6 +12,17 @@ function gcdIterative(a, b) {
     return a;
 }
 
+let a = 48, b = 18;
+while (a != b) {
+    if (a > b) {
+        a = a - b;
+    } else {
+        b = b - a;
+    }
+}
+console.log(a);
+
+
 // 2. Recursive Approach (Using Subtraction - Basic Euclidean)
 // Isme bade number me se chota number minus karte hain.
 // Time Complexity: O(max(a, b)) -> Worst case me bahut slow (e.g., gcd(100000, 1))
@@ -20,7 +31,7 @@ function gcdRecursiveSub(a, b) {
     if (a === 0) return b;
     if (b === 0) return a;
     if (a === b) return a;
-    
+
     // Recursive calls
     if (a > b) {
         return gcdRecursiveSub(a - b, b);
